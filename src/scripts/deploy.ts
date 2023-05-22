@@ -11,7 +11,7 @@ const rest = new REST({ version: "10" }).setToken(
   process.env.CLIENT_TOKEN as string
 );
 
-async function main() {
+(async () => {
   const currentUser = (await rest.get(Routes.user())) as APIUser;
 
   const endpoint =
@@ -25,9 +25,7 @@ async function main() {
   await rest.put(endpoint, { body });
 
   return currentUser;
-}
-
-main()
+})()
   .then((user) => {
     const tag = `${user.username}#${user.discriminator}`;
 

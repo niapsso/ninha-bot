@@ -7,7 +7,7 @@ const meta = new SlashCommandBuilder()
   .addStringOption((option) =>
     option
       .setName("message")
-      .setDescription("provê ao bot uma messagem para responder")
+      .setDescription("provê ao bot uma messagem para responder") // /ping ladçkfjkaljdf
       .setMinLength(1)
       .setMaxLength(2000)
       .setRequired(false)
@@ -17,7 +17,7 @@ export default command(meta, ({ interaction }) => {
   const message = interaction.options.getString("message");
 
   return interaction.reply({
-    ephemeral: true,
+    ephemeral: false,
     content: message || "pong (seje pongado",
   });
 });
